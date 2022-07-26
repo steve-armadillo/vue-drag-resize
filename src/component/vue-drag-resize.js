@@ -1,3 +1,5 @@
+const uniqueId = require('lodash/uniqueId');
+
 const styleMapping = {
     y: {
         t: 'top',
@@ -176,6 +178,7 @@ export default {
             right: null,
             bottom: null,
             minHeight: null,
+            _uid: null
         };
     },
 
@@ -194,6 +197,8 @@ export default {
     },
 
     mounted() {
+        this._uid = uniqueId('drag');
+        
         this.parentElement = this.$el.parentNode;
         this.parentWidth = this.parentW ? this.parentW : this.parentElement.clientWidth;
         this.parentHeight = this.parentH ? this.parentH : this.parentElement.clientHeight;
